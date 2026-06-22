@@ -1,0 +1,28 @@
+Project flow - MLops-RTG6-CI
+
+Concept:
+- Small Python demo: Streamlit app (UI) + unit tests. CI runs tests automatically on push/PR.
+
+Local steps:
+1. Edit code (app.py or _test.py).
+2. Run tests: `pytest _test.py`.
+3. Run UI: `python app.py` or `streamlit run app.py`.
+
+Git workflow:
+1. `git add` → `git commit -m "..."` → `git push origin main`.
+2. Push triggers GitHub Actions workflow: `.github/workflows/ci.yaml`.
+
+CI flow (what runs):
+- Checkout code.
+- Setup Python.
+- Install test deps (`pytest`).
+- Run `pytest _test.py`.
+
+If CI fails:
+- Open Actions on GitHub, view logs, fix locally, re-run tests, push again.
+
+Tips:
+- Keep CI focused: only install required test deps.
+- Add `requirements.txt` and cache pip in CI for speed.
+
+End.
